@@ -5,7 +5,12 @@ import Row from 'react-bootstrap/Row';
 import PlayListAdmin from './components/playlist/PlayListAdmin';
 
 class AddVideo extends Component {
-  state = {  }
+  
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() { 
     return ( <>
       <Row><Col sm={4}><AddForm></AddForm></Col><Col sm={6}></Col></Row>
@@ -13,5 +18,4 @@ class AddVideo extends Component {
     </> );
   }
 }
- 
 export default AddVideo;
