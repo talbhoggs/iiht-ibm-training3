@@ -3,6 +3,7 @@ import AddForm from './components/add-form/AddForm';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import PlayListAdmin from './components/playlist/PlayListAdmin';
+import { connect } from 'react-redux';
 
 class AddVideo extends Component {
   
@@ -18,4 +19,9 @@ class AddVideo extends Component {
     </> );
   }
 }
-export default AddVideo;
+
+function mapStateToProps(state) {
+  return {video: state.video};
+}
+
+export default connect(mapStateToProps)(AddVideo);

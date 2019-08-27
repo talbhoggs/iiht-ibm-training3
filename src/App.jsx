@@ -24,7 +24,12 @@ import { faHome, faPlusCircle, faPlayCircle} from '@fortawesome/free-solid-svg-i
 library.add(faHome, faPlusCircle, faPlayCircle, fab);
 
 class App extends Component {
-  state = {  }
+  
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  
   render() { 
     return (
     <div className="App">
