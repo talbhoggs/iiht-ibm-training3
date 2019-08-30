@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import AddForm from './components/add-form/AddForm';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import PlayListAdmin from './components/playlist/PlayListAdmin';
 import { connect } from 'react-redux';
 
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
+import PlayListAdmin from './components/playlist/PlayListAdmin';
+import AddForm from './components/add-form/AddForm';
 import { getVideos, saveVideo, deleteVideo, getVideo } from "./../../api/videoApi";
 
 class AddVideo extends Component {
