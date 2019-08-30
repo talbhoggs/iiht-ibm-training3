@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import PlayListAdmin from './components/playlist/PlayListAdmin';
 import { connect } from 'react-redux';
 
+import { getVideos, saveVideo, deleteVideo, getVideo } from "./../../api/videoApi";
+
 class AddVideo extends Component {
   
   constructor(props) {
