@@ -15,11 +15,13 @@ class AddForm extends Component {
       <Form onSubmit={this.props.onSubmit}>
         <Form.Group controlId="title">
           <Form.Label>Title</Form.Label>
-          <Form.Control type="text" onChange={this.props.onTitleChange} value={this.props.video.title} />
+          <Form.Control type="text" onChange={this.props.onTitleChange} value={this.props.video.title} isInvalid={this.props.errors.title} />
+          {this.props.errors.title && <div className="invalid-feedback">{this.props.errors.title}</div>}
         </Form.Group>
         <Form.Group controlId="url">
           <Form.Label>Youtube Url</Form.Label>
-          <Form.Control type="text" onChange={this.props.onLinkChange} value={this.props.video.link} />
+          <Form.Control type="text" onChange={this.props.onLinkChange} value={this.props.video.link} isInvalid={this.props.errors.link} />
+          {this.props.errors.link && <div className="invalid-feedback">{this.props.errors.link}</div>}
         </Form.Group>
         <Button variant="primary" type="submit">
           <FontAwesomeIcon icon="plus-circle" /> Add Video
