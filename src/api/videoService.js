@@ -3,7 +3,7 @@ const baseUrl = "http://localhost:3001/playlist/";
 export async function getVideos() {
   try {
     const videos = await fetch(baseUrl);
-    return videos.json();
+    return videos;
    } catch(e) {
      throw(e);
    }

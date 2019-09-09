@@ -17,7 +17,7 @@ class AddVideo extends Component {
     this.state = {
       video : {
         title: "",
-        link: "",
+        url: "",
         status: "added",
         approved: 0,
         likes: 0,
@@ -25,8 +25,15 @@ class AddVideo extends Component {
         currentStatus: "paused",
         exitplayprogress: 0
       },
-      errors : {}
+      errors : {},
+      videos : []
     };
+  }
+
+  componentDidMount() {
+    getVideos().then(res => res.json())
+      .then(videos => this.setState({ videos }));
+
   }
 
   handleTitleChange = e => {
@@ -35,7 +42,7 @@ class AddVideo extends Component {
   }
 
   handleLinkChange = e => {
-    const video = {...this.state.video, link: e.target.value};
+    const video = {...this.state.video, url: e.target.value};
     this.setState({video: video});
   }
 
@@ -43,7 +50,7 @@ class AddVideo extends Component {
     this.setState({
       video : {
         title: "",
-        link: "",
+        url: "",
         status: "added",
         approved: 0,
         likes: 0,
@@ -65,18 +72,18 @@ class AddVideo extends Component {
       errorsObj.title = 'Title is required';
     }
 
-    if (video.link === '') {
-      errorsObj.link = 'Link is required';
+    if (video.url === '') {
+      errorsObj.url = 'Link is required';
       hasLinkValue = true;
     }
 
     const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})?$/;
 
-    const url = (decodeURIComponent(video.link));
+    const url = (decodeURIComponent(video.url));
     const match = url.match(regex);
 
     if (!hasLinkValue && !match) {
-      errorsObj.link = "Url must be in the following format https://www.youtube.com/watch?v=hashcode\n example : https://www.youtube.com/watch?v=h_w_0zUs9ac';";
+      errorsObj.url = "Url must be in the following format https://www.youtube.com/watch?v=hashcode\n example : https://www.youtube.com/watch?v=h_w_0zUs9ac';";
     }
 
     if(Object.keys(errorsObj).length !== 0) {
@@ -85,7 +92,11 @@ class AddVideo extends Component {
       return;
     }
 
-    saveVideo(video);
+    saveVideo(video).then(sVideo=> {
+        const videos = [...this.state.videos, sVideo];
+        this.setState({videos});
+    });
+
     this.clearState();
   }
 
@@ -93,7 +104,7 @@ class AddVideo extends Component {
     return ( <>
       <Row><Col sm={4}><AddForm errors={this.state.errors} video={this.state.video} onSubmit={this.handleSubmit} onTitleChange={this.handleTitleChange} onLinkChange={this.handleLinkChange}>
         </AddForm></Col><Col sm={6}></Col></Row>
-      <PlayListAdmin></PlayListAdmin>
+      <PlayListAdmin videos={this.state.videos}></PlayListAdmin>
     </> );
   }
 }

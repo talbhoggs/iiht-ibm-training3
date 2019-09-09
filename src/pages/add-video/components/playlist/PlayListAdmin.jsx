@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
+import TableRow from './../table-row/TableRow';
 
 class PlayListAdmin extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
+    const { videos } = this.props;
     return (
       <>
         <br />
@@ -16,18 +24,9 @@ class PlayListAdmin extends Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
+        {videos.map((video,key) => (
+          <TableRow video={video} />
+        ))}
         </tbody>
       </Table>
       </>

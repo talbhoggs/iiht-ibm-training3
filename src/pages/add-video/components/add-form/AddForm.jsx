@@ -20,8 +20,8 @@ class AddForm extends Component {
         </Form.Group>
         <Form.Group controlId="url">
           <Form.Label>Youtube Url</Form.Label>
-          <Form.Control type="text" onChange={this.props.onLinkChange} value={this.props.video.link} isInvalid={this.props.errors.link} />
-          {this.props.errors.link && <div className="invalid-feedback">{this.props.errors.link}</div>}
+          <Form.Control type="text" onChange={this.props.onLinkChange} value={this.props.video.url} isInvalid={this.props.errors.url} />
+          {this.props.errors.url && <div className="invalid-feedback">{this.props.errors.url}</div>}
         </Form.Group>
         <Button variant="primary" type="submit">
           <FontAwesomeIcon icon="plus-circle" /> Add Video
