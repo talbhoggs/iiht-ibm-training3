@@ -6,6 +6,9 @@ import Row from 'react-bootstrap/Row';
 
 import PlayListAdmin from './components/playlist/PlayListAdmin';
 import AddForm from './components/add-form/AddForm';
+import DeleteModal from './components/modal/DeleteModal';
+import { Button} from 'react-bootstrap';
+
 import { getVideos, saveVideo, deleteVideo, getVideo } from "../../api/videoService";
 
 import PropTypes from 'prop-types';
@@ -26,7 +29,9 @@ class AddVideo extends Component {
         exitplayprogress: 0
       },
       errors : {},
-      videos : []
+      videos : [],
+      modalShow : false,
+      deleteVideoItem : ""
     };
   }
 
@@ -60,6 +65,48 @@ class AddVideo extends Component {
       },
       errors : {}
     });
+  }
+
+  handleDelete = (id, e) => {
+    e.preventDefault();
+    this.handleShow();
+
+    const deleteVideoItem = {...this.state.deleteVideoItem, deleteVideoItem : id};
+    this.setState(deleteVideoItem);
+
+  }
+
+  handleDeleteVideo = () => {
+    deleteVideo(this.state.deleteVideoItem).then(deletedVideo => {
+      return deletedVideo;
+    });
+
+    const delItem = this.state.deleteVideoItem;
+    const updatedVideos = [...this.state.videos];
+
+    var filtered = updatedVideos.filter(function(value, index, arr){
+      return value.id !== delItem;
+    });
+
+    const videos = [...filtered];
+    this.setState({videos});
+    this.handleClose();
+  }
+
+  handleEdit = (id, e) => {
+    e.preventDefault();
+    alert("Edit" + id);
+    //update state? videos
+  }
+
+  handleClose = () => {
+    const modalShow = {...this.state.modalShow, modalShow : false};
+    this.setState(modalShow);
+  }
+
+  handleShow = () => {
+    const modalShow = {...this.state.modalShow, modalShow : true};
+    this.setState(modalShow);
   }
 
   handleSubmit = e => {
@@ -104,7 +151,8 @@ class AddVideo extends Component {
     return ( <>
       <Row><Col sm={4}><AddForm errors={this.state.errors} video={this.state.video} onSubmit={this.handleSubmit} onTitleChange={this.handleTitleChange} onLinkChange={this.handleLinkChange}>
         </AddForm></Col><Col sm={6}></Col></Row>
-      <PlayListAdmin videos={this.state.videos}></PlayListAdmin>
+      <PlayListAdmin videos={this.state.videos} handleEdit={this.handleEdit} handleDelete={this.handleDelete}></PlayListAdmin>
+      <DeleteModal modalShow={this.state.modalShow} handleClose={this.handleClose} handleShow={this.handleShow} handleDeleteVideo={this.handleDeleteVideo}/>
     </> );
   }
 }

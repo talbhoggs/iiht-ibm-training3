@@ -19,9 +19,9 @@ import Player from './pages/player/Player';
 // font awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faHome, faPlusCircle, faPlayCircle} from '@fortawesome/free-solid-svg-icons'
+import { faHome, faPlusCircle, faPlayCircle, faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faHome, faPlusCircle, faPlayCircle, fab);
+library.add(faHome, faPlusCircle, faPlayCircle, fab, faTrashAlt, faEdit);
 
 class App extends Component {
   

@@ -10,7 +10,7 @@ class PlayListAdmin extends Component {
   }
 
   render() {
-    const { videos } = this.props;
+    const { videos, handleDelete, handleEdit } = this.props;
     return (
       <>
         <br />
@@ -25,7 +25,7 @@ class PlayListAdmin extends Component {
         </thead>
         <tbody>
         {videos.map((video) => (
-          <TableRow key={video.id} video={video} />
+          <TableRow key={video.id} video={video} handleDelete={handleDelete} handleEdit={handleEdit} />
         ))}
         </tbody>
       </Table>
