@@ -24,8 +24,8 @@ class PlayListAdmin extends Component {
           </tr>
         </thead>
         <tbody>
-        {videos.map((video,key) => (
-          <TableRow video={video} />
+        {videos.map((video) => (
+          <TableRow key={video.id} video={video} />
         ))}
         </tbody>
       </Table>
