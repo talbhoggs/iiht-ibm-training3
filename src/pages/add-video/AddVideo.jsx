@@ -82,14 +82,12 @@ class AddVideo extends Component {
     });
 
     const delItem = this.state.deleteVideoItem;
-    const updatedVideos = [...this.state.videos];
 
-    var filtered = updatedVideos.filter(function(value, index, arr){
+    let filtered = this.state.videos.filter(function(value, index, arr){
       return value.id !== delItem;
     });
 
-    const videos = [...filtered];
-    this.setState({videos});
+    this.setState({videos: filtered});
     this.handleClose();
   }
 
