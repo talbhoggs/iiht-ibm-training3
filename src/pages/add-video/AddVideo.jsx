@@ -31,7 +31,7 @@ class AddVideo extends Component {
       errors : {},
       videos : [],
       modalShow : false,
-      deleteVideoItem : ""
+      deleteVideoItem : {}
     };
   }
 
@@ -67,21 +67,21 @@ class AddVideo extends Component {
     });
   }
 
-  handleDelete = (id, e) => {
+  handleDelete = (deletedObj, e) => {
     e.preventDefault();
     this.handleShow();
 
-    const deleteVideoItem = {...this.state.deleteVideoItem, deleteVideoItem : id};
+    const deleteVideoItem = {...this.state.deleteVideoItem, deleteVideoItem : deletedObj};
     this.setState(deleteVideoItem);
 
   }
 
   handleDeleteVideo = () => {
-    deleteVideo(this.state.deleteVideoItem).then(deletedVideo => {
+    deleteVideo(this.state.deleteVideoItem.id).then(deletedVideo => {
       return deletedVideo;
     });
 
-    const delItem = this.state.deleteVideoItem;
+    const delItem = this.state.deleteVideoItem.id;
 
     let filtered = this.state.videos.filter(function(value, index, arr){
       return value.id !== delItem;
@@ -150,7 +150,7 @@ class AddVideo extends Component {
       <Row><Col sm={4}><AddForm errors={this.state.errors} video={this.state.video} onSubmit={this.handleSubmit} onTitleChange={this.handleTitleChange} onLinkChange={this.handleLinkChange}>
         </AddForm></Col><Col sm={6}></Col></Row>
       <PlayListAdmin videos={this.state.videos} handleEdit={this.handleEdit} handleDelete={this.handleDelete}></PlayListAdmin>
-      <DeleteModal modalShow={this.state.modalShow} handleClose={this.handleClose} handleShow={this.handleShow} handleDeleteVideo={this.handleDeleteVideo}/>
+      <DeleteModal deleteVideoItem={this.state.deleteVideoItem} modalShow={this.state.modalShow} handleClose={this.handleClose} handleShow={this.handleShow} handleDeleteVideo={this.handleDeleteVideo}/>
     </> );
   }
 }

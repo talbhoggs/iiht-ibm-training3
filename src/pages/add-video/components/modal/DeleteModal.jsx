@@ -13,7 +13,11 @@ class DeleteModal extends Component {
         <Modal.Header closeButton>
           <Modal.Title>Delete Title</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete these record?</Modal.Body>
+        <Modal.Body>
+          Are you sure you want to delete these record?<br />
+          <h6>#{this.props.deleteVideoItem.id} - {this.props.deleteVideoItem.title}</h6>
+        </Modal.Body>
+
         <Modal.Footer>
           <Button variant="secondary" onClick={this.props.handleClose}>
             Cancel
