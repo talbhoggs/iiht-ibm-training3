@@ -14,7 +14,10 @@ class TableRow extends Component {
         <td>{this.props.video.id}</td>
         <td>{this.props.video.title}</td>
         <td>{this.props.video.url}</td>
-        <td><a onClick={this.props.handleEdit.bind(this, this.props.video.id)}><FontAwesomeIcon icon="edit" /></a> | <a onClick={this.props.handleDelete.bind(this, this.props.video)}><FontAwesomeIcon icon="trash-alt" /></a> | <Badge variant="success">approve</Badge> | <Badge variant="light">approve</Badge></td>
+        <td>
+          <a onClick={this.props.handleEdit.bind(this, this.props.video)}><FontAwesomeIcon icon="edit" /></a> |
+          <a onClick={this.props.handleDelete.bind(this, this.props.video)}><FontAwesomeIcon icon="trash-alt" /></a> | <a onClick={this.props.handeApproved.bind(this, this.props.video)}><Badge variant={`${this.props.video.approved == 1? "success" : "light"}`}>approve</Badge></a>
+          </td>
       </tr>
     </>
     );

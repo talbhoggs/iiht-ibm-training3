@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import configStore from './redux/store';
 import { Provider } from 'react-redux';
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.cosmo.min.css";
 
 const store = configStore();
 
