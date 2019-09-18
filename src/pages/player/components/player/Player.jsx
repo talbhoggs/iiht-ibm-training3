@@ -30,6 +30,7 @@ class Player extends Component {
               onPlay={this.props.handlePlay}
               onPause={this.props.player.handlePause}
               onProgress={this.props.handleProgress}
+              onReady={this.props.handleOnReady}
               youtubeConfig={{ playerVars: { 
                 controls: 0,
                 rel: 0,

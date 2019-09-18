@@ -16,7 +16,7 @@ class PlayerPage extends Component {
     this.state = {
       selectedVideo: {},
       player :{
-        url: "https://www.youtube.com/watch?v=Psxktpxkc6o",
+        url: null,
         pip: false,
         playing: false,
         controls: false,
@@ -39,13 +39,11 @@ class PlayerPage extends Component {
   }
 
   handleSelectedVideo = (video, e) =>{
-    const selectedVideo = {...this.state.selectedVideo, video};
-    // handle logic here
-    console.log(selectedVideo)
+    let player = {...this.state.player, url: video.url};
+    this.setState({...this.state.player, player});
   }
 
   handlePlay () {
-    console.log("play")
     let player = {...this.state.player, playing: true};
     this.setState({...this.state.player, player});
   }
@@ -88,10 +86,12 @@ class PlayerPage extends Component {
     this.setState({...this.state.player, player});
   }
 
-  handleProgress = state => {
-    console.log('onProgress', state)
-    // We only want to update time slider if we are not currently seeking
-    
+  handleProgress = (s) => {
+    console.log(s);
+  }
+
+  handleOnReady = state => {
+    this.handlePlay();
   }
 
 
@@ -100,7 +100,7 @@ class PlayerPage extends Component {
     return ( <>
        <Row>
           <Col sm={8}>
-            <Player player={this.state.player} handleProgress={this.handleProgress}></Player>
+            <Player player={this.state.player} handleProgress={this.handleProgress} handleOnReady={this.handleOnReady}></Player>
 
             <Controls player={this.state.player} 
             handlePlay={this.handlePlay.bind(this)} 
