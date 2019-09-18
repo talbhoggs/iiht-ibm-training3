@@ -9,6 +9,15 @@ export async function getVideos() {
    }
 }
 
+export async function getApprovedVideos() {
+  try {
+    const videos = await fetch(baseUrl+"?approved=1");
+    return videos;
+   } catch(e) {
+     throw(e);
+   }
+}
+
 export async function getVideo(videoId) {
   try {
     const videos = await fetch(baseUrl + videoId);

@@ -14,14 +14,14 @@ import Container from 'react-bootstrap/Container';
 // pages
 import About from './pages/about/About';
 import AddVideo from './pages/add-video/AddVideo';
-import Player from './pages/player/Player';
+import Player from './pages/player/PlayerPage';
 
 // font awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faHome, faPlusCircle, faPlayCircle, faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons'
+import { faHome, faPlusCircle, faPlayCircle, faTrashAlt, faEdit, faListAlt, faPauseCircle, faPlusSquare,faMinusSquare, faRedoAlt, faHeadphonesAlt, faThumbsDown, faThumbsUp} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faHome, faPlusCircle, faPlayCircle, fab, faTrashAlt, faEdit);
+library.add(faHome, faPlusCircle, faPlayCircle, fab, faTrashAlt, faEdit, faListAlt, faPauseCircle, faPlusSquare,faMinusSquare, faRedoAlt, faHeadphonesAlt, faThumbsDown, faThumbsUp);
 
 class App extends Component {
   
