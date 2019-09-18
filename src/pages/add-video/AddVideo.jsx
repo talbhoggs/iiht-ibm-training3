@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Col from 'react-bootstrap/Col';
@@ -50,7 +49,6 @@ class AddVideo extends Component {
   }
 
   handleTitleChangeEdit = (e) => {
-    console.log(e)
     const deleteVideoItem = {...this.state.deleteVideoItem, title: e.target.value};
     this.setState({deleteVideoItem});
   }
@@ -86,10 +84,8 @@ class AddVideo extends Component {
   handleDelete = (deletedObj, e) => {
     e.preventDefault();
     this.handleShowModalDelete();
-
     const deleteVideoItem = {...this.state.deleteVideoItem, deleteVideoItem : deletedObj};
     this.setState(deleteVideoItem);
-
   }
 
   handeApproved = (updateVideo, e) => {
@@ -194,7 +190,7 @@ class AddVideo extends Component {
     if (!hasLinkValue && !match) {
       errorsObj.url = "Url must be in the following format https://www.youtube.com/watch?v=hashcode\n example : https://www.youtube.com/watch?v=h_w_0zUs9ac';";
     }
-
+    console.log(errorsObj)
     if(Object.keys(errorsObj).length !== 0) {
       const errorsSet = {...this.state.errorsEdit, errorsObj};
       this.setState({errorsEdit : errorsSet.errorsObj});
@@ -277,7 +273,7 @@ class AddVideo extends Component {
         </AddForm></Col><Col sm={6}></Col></Row>
       <PlayListAdmin videos={this.state.videos} handleEdit={this.handleEdit} handleDelete={this.handleDelete} handeApproved={this.handeApproved}></PlayListAdmin>
 
-      <EditModal deleteVideoItem={this.state.deleteVideoItem} modalShow={this.state.modalEdit} handleClose={this.handleCloseModalEdit} handleShow={this.handleShowModalEdit} handleDeleteVideo={this.handleDeleteVideo} errors={this.state.errors} video={this.state.video} onSubmit={this.handleEditSubmit} onTitleChange={this.handleTitleChangeEdit} onLinkChange={this.handleLinkChangeEdit}/>
+      <EditModal deleteVideoItem={this.state.deleteVideoItem} modalShow={this.state.modalEdit} handleClose={this.handleCloseModalEdit} handleShow={this.handleShowModalEdit} handleDeleteVideo={this.handleDeleteVideo} errors={this.state.errorsEdit} video={this.state.video} onSubmit={this.handleEditSubmit} onTitleChange={this.handleTitleChangeEdit} onLinkChange={this.handleLinkChangeEdit}/>
 
       <DeleteModal deleteVideoItem={this.state.deleteVideoItem} modalShow={this.state.modalDelete} handleClose={this.handleCloseModalDelete} handleShow={this.handleShowModalDelete} handleDeleteVideo={this.handleDeleteVideo}/>
       <ToastContainer />

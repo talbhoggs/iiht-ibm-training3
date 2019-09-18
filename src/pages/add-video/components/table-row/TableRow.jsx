@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Badge } from 'react-bootstrap';
 class TableRow extends Component {
+
   constructor(props) {
     super(props);
     this.state = {};

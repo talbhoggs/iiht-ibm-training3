@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Controls.css';
-import { Button } from 'react-bootstrap';
+
 class Controls extends Component {
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -17,7 +18,6 @@ class Controls extends Component {
         <button onClick={this.props.handleDecreaseVolume} className="btn"><FontAwesomeIcon icon="minus-square" /></button>
         <button onClick={this.props.handleReload} className="btn"><FontAwesomeIcon icon="redo-alt" /></button>
         <button onClick={this.props.handleMute} className="btn"><FontAwesomeIcon icon="headphones-alt" /></button>
-
         <div className="likeUnLike">
             <FontAwesomeIcon icon="thumbs-up" /> &nbsp;
             <FontAwesomeIcon icon="thumbs-down" />

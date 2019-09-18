@@ -108,6 +108,7 @@ class PlayerPage extends Component {
             handleIncreaseVolume={this.handleIncreaseVolume.bind(this)}
             handleDecreaseVolume={this.handleDecreaseVolume.bind(this)}
             handleMute={this.handleMute.bind(this)}></Controls>
+
             <br />
             {this.state.player.playing}
             <progress id="progress-bar" max={1} value={this.state.player.load}></progress>
