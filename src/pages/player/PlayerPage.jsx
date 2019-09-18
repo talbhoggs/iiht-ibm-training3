@@ -6,7 +6,7 @@ import Controls from './components/controls/Controls';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-import { getApprovedVideos } from "../../api/videoService";
+import { getApprovedVideos, saveVideo } from "../../api/videoService";
 
 import './PlayerPage.css';
 
@@ -41,6 +41,7 @@ class PlayerPage extends Component {
   handleSelectedVideo = (video, e) =>{
     let player = {...this.state.player, url: video.url};
     this.setState({...this.state.player, player});
+    this.setState({...this.state.selectedVideo, selectedVideo: video});
   }
 
   handlePlay () {
@@ -87,13 +88,30 @@ class PlayerPage extends Component {
   }
 
   handleProgress = (s) => {
-    console.log(s);
+    const player = {...this.state.player, played: s.played};
+    this.setState({...this.state.player, player});
   }
 
   handleOnReady = state => {
+    console.log(this.state.selectedVideo);
     this.handlePlay();
   }
 
+  handleLikes() {
+    let selectedVideo = {...this.state.selectedVideo, likes : this.state.selectedVideo.likes + 1};
+    console.log(selectedVideo)
+    saveVideo(selectedVideo).then(sVideo=> {
+      this.setState({...this.state.selectedVideo, selectedVideo : sVideo});
+    });
+  }
+
+  handleUnLikes() {
+    let selectedVideo = {...this.state.selectedVideo, unlikes : this.state.selectedVideo.unlikes + 1};
+    saveVideo(selectedVideo).then(sVideo=> {
+      this.setState({...this.state.selectedVideo, selectedVideo : sVideo});
+    });
+
+  }
 
   render() { 
     const { playList } = this.state;
@@ -102,16 +120,16 @@ class PlayerPage extends Component {
           <Col sm={8}>
             <Player player={this.state.player} handleProgress={this.handleProgress} handleOnReady={this.handleOnReady}></Player>
 
-            <Controls player={this.state.player} 
+            <Controls selectedVideo={this.state.selectedVideo} player={this.state.player}
             handlePlay={this.handlePlay.bind(this)} 
             handlePause={this.handlePause.bind(this)}
             handleIncreaseVolume={this.handleIncreaseVolume.bind(this)}
             handleDecreaseVolume={this.handleDecreaseVolume.bind(this)}
-            handleMute={this.handleMute.bind(this)}></Controls>
-
+            handleMute={this.handleMute.bind(this)}
+            handleLikes={this.handleLikes.bind(this)}
+            handleUnLikes={this.handleUnLikes.bind(this)}></Controls>
             <br />
-            {this.state.player.playing}
-            <progress id="progress-bar" max={1} value={this.state.player.load}></progress>
+            <progress id="progress-bar" max={1} value={this.state.player.played}></progress>
           </Col>
           <Col sm={4}>
             <PlayList playList={playList} handleSelectedVideo={this.handleSelectedVideo} />

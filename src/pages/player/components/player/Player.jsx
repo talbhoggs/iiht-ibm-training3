@@ -15,6 +15,7 @@ class Player extends Component {
       <style>{style}</style>
       <div className="max-width-1024">
         <div className="embed-responsive embed-responsive-16by9" id="player">
+        <p className="text-center">Please select a video</p>
         <ReactPlayer
                 played={this.props.player.played}
                 className='react-player'
