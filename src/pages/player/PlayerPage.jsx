@@ -99,8 +99,16 @@ class PlayerPage extends Component {
   }
 
   handleReload(e) {
-    console.log(e)
-    //this.state.player.seekTo(parseFloat(0));
+    let selectedVideoCache = this.state.selectedVideo;
+    let player = {...this.state.player, url: null};
+    this.setState({...this.state.player, player});
+    this.setState({...this.state.selectedVideo, selectedVideo: this.state.selectedVideo});
+
+    setTimeout(() => {
+      let plyer = {...this.state.player, url: selectedVideoCache.url};
+      this.setState({...this.state.player, player : plyer});
+      this.setState({...this.state.selectedVideo, selectedVideo: selectedVideoCache});
+    }, 200);
   }
 
   handleUnLikes() {
