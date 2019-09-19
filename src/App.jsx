@@ -15,7 +15,7 @@ import Container from 'react-bootstrap/Container';
 import About from './pages/about/AboutPage';
 import AddVideo from './pages/add-video/AddVideoPage';
 import Player from './pages/player/PlayerPage';
-
+import PageNotFound from './pages/notfound/PageNotFound'
 // font awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -41,7 +41,7 @@ class App extends Component {
             <Route path='/about' component={About} />
             <Route path='/add-video' component={AddVideo} />
             <Route path='/player' component={Player} />
-            <Redirect to="/" />
+            <Route path="*" component={PageNotFound} />
           </Switch>
       </Container>
     </div>
