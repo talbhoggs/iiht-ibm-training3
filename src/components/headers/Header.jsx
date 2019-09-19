@@ -35,15 +35,15 @@ class Header extends Component {
             {' IIHT-IBM Video Player (react)'}
           </Navbar.Brand>
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-            <Nav>
+            <Nav className="nav" as="ul">
               
-              <Nav.Item>
-                <Link onClick={this.handleActiveLink.bind(this, "about")} to="/about" className={`${this.state.aboutActive ? 'activeLink' : 'inActiveLink'}`}><FontAwesomeIcon icon="home" /> About</Link>&nbsp;|
+              <Nav.Item as="li">
+                <Link onClick={this.handleActiveLink.bind(this, "about")} to="/about" className={`${this.state.aboutActive ? 'activeLink' : 'inActiveLink'}`}><FontAwesomeIcon icon="home" /> About </Link>
               </Nav.Item>
-              <Nav.Item>
-              <Link onClick={this.handleActiveLink.bind(this, "player")} to="/player" className={`${this.state.playerActive ? 'activeLink' : 'inActiveLink'}`}><FontAwesomeIcon icon="play-circle" /> Player</Link>&nbsp;|</Nav.Item>
+              <Nav.Item as="li">
+              <Link onClick={this.handleActiveLink.bind(this, "player")} to="/player" className={`${this.state.playerActive ? 'activeLink' : 'inActiveLink'}`}><FontAwesomeIcon icon="play-circle" /> Player </Link></Nav.Item>
 
-              <Nav.Item><Link onClick={this.handleActiveLink.bind(this, "addvideo")} to="/add-video" className={`${this.state.videoActive ? 'activeLink' : 'inActiveLink'}`}><FontAwesomeIcon icon="plus-circle" /> Add Video</Link></Nav.Item>
+              <Nav.Item as="li"><Link onClick={this.handleActiveLink.bind(this, "addvideo")} to="/add-video" className={`${this.state.videoActive ? 'activeLink' : 'inActiveLink'}`}><FontAwesomeIcon icon="plus-circle" /> Add Video </Link></Nav.Item>
              
             </Nav>
           </Navbar.Collapse>

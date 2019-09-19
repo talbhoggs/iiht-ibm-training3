@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Badge } from 'react-bootstrap';
+import './TableRow.css';
+
 class TableRow extends Component {
 
   constructor(props) {
@@ -11,7 +13,7 @@ class TableRow extends Component {
   render() {
     return(
     <>
-      <tr>
+      <tr className="tableRow">
         <td>{this.props.video.id}</td>
         <td>{this.props.video.title}</td>
         <td>{this.props.video.url}</td>

@@ -5,3 +5,7 @@
 .inActiveLink {
   color: grey;
 }
+
+.nav li {
+  padding-left: 1em;
+}

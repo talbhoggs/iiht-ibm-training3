@@ -9,7 +9,7 @@ class About extends Component {
       <h3>About</h3>
       <p>This webapp is assignment number 3 for the Full Stack Developer (FSD) course by <a href="https://iiht.com">IIHT</a> and <a href="https://www.ibm.com">IBM</a>.</p>
       <p>
-        <strong>Date submitted:</strong> March 25, 2019
+        <strong>Date submitted:</strong> September 20, 2019
         <br />
         <strong>Developer:</strong> Charles A. Amper
         <br />
@@ -20,8 +20,8 @@ class About extends Component {
         <li>React</li>
         <li><a href="https://react-bootstrap.github.io">React Bootstrap</a> (react-bootstrap.github.io)</li>
         <li><a href="https://github.com/typicode/json-server">JSON Server fake api</a></li>
-        <li><a href="https://developers.google.com/youtube/iframe_api_reference">
-          YouTube Player API Reference for iframe Embeds</a></li>
+        <li><a href="https://www.npmjs.com/package/react-player">
+          ReactPlayer</a></li>
       </ul>
       </>
     );
