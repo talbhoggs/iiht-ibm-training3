@@ -15,7 +15,7 @@ class DeleteModal extends Component {
         </Modal.Header>
         <Modal.Body>
           Are you sure you want to delete these record?<br />
-          <h6>#{this.props.deleteVideoItem.id} - {this.props.deleteVideoItem.title}</h6>
+          <h6>#{this.props.selectedVideo.id} - {this.props.selectedVideo.title}</h6>
         </Modal.Body>
 
         <Modal.Footer>

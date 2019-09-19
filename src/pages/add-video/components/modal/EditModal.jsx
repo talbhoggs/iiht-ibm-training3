@@ -10,7 +10,7 @@ class EditModal extends Component {
   }
 
   render() {
-    const {deleteVideoItem, errors, onLinkChange, onTitleChange, onSubmit} = this.props;
+    const {selectedVideo, errors, onLinkChange, onTitleChange, onSubmit} = this.props;
     return(<>
       <Modal show={this.props.modalShow} onHide={this.props.handleClose}>
         <Modal.Header closeButton>
@@ -20,12 +20,12 @@ class EditModal extends Component {
         <Form onSubmit={onSubmit}>
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
-            <Form.Control type="text" onChange={onTitleChange} defaultValue={deleteVideoItem.title} isInvalid={errors.title} />
+            <Form.Control type="text" onChange={onTitleChange} defaultValue={selectedVideo.title} isInvalid={errors.title} />
             {errors.title && <div className="invalid-feedback">Title is required</div>}
           </Form.Group>
           <Form.Group controlId="url">
             <Form.Label>Youtube Url</Form.Label>
-            <Form.Control type="text" onChange={onLinkChange} defaultValue={deleteVideoItem.url} isInvalid={errors.url} />
+            <Form.Control type="text" onChange={onLinkChange} defaultValue={selectedVideo.url} isInvalid={errors.url} />
             {errors.url && <div className="invalid-feedback">{errors.url}</div>}
           </Form.Group>
           <div className="clearfix">

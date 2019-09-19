@@ -34,7 +34,7 @@ class AddVideo extends Component {
       videos : [],
       modalDelete : false,
       modalEdit : false,
-      deleteVideoItem : {}
+      selectedVideo : {}
     };
   }
 
@@ -49,13 +49,13 @@ class AddVideo extends Component {
   }
 
   handleTitleChangeEdit = (e) => {
-    const deleteVideoItem = {...this.state.deleteVideoItem, title: e.target.value};
-    this.setState({deleteVideoItem});
+    const selectedVideo = {...this.state.selectedVideo, title: e.target.value};
+    this.setState({selectedVideo});
   }
 
   handleLinkChangeEdit = (e) => {
-    const deleteVideoItem = {...this.state.deleteVideoItem, url: e.target.value};
-    this.setState({deleteVideoItem});
+    const selectedVideo = {...this.state.selectedVideo, url: e.target.value};
+    this.setState({selectedVideo});
   }
 
   handleLinkChange = e => {
@@ -77,15 +77,15 @@ class AddVideo extends Component {
       },
       errors : {},
       errorsEdit : {},
-      deleteVideoItem : {}
+      selectedVideo : {}
     });
   }
 
   handleDelete = (deletedObj, e) => {
     e.preventDefault();
     this.handleShowModalDelete();
-    const deleteVideoItem = {...this.state.deleteVideoItem, deleteVideoItem : deletedObj};
-    this.setState(deleteVideoItem);
+    const selectedVideo = {...this.state.selectedVideo, selectedVideo : deletedObj};
+    this.setState(selectedVideo);
   }
 
   handeApproved = (updateVideo, e) => {
@@ -116,17 +116,17 @@ class AddVideo extends Component {
   }
 
   handleDeleteVideo = () => {
-    deleteVideo(this.state.deleteVideoItem.id).then(deletedVideo => {
+    deleteVideo(this.state.selectedVideo.id).then(deletedVideo => {
       return deletedVideo;
     });
 
-    const delItem = this.state.deleteVideoItem.id;
+    const delItem = this.state.selectedVideo.id;
 
     let filtered = this.state.videos.filter(function(value, index, arr){
       return value.id !== delItem;
     });
 
-    this.setState({videos: filtered,deleteVideoItem :{}});
+    this.setState({videos: filtered,selectedVideo :{}});
     this.handleCloseModalDelete();
 
     toast.info("Item Deleted Successfully !!", {
@@ -139,13 +139,13 @@ class AddVideo extends Component {
     });
   }
 
-  handleEdit = (selectedVideo, e) => {
+  handleEdit = (selectedVid, e) => {
     e.preventDefault();
     const modalEdit = {...this.state.modalEdit, modalEdit : true};
     this.setState(modalEdit);
 
-    const deleteVideoItem = {...this.state.deleteVideoItem, deleteVideoItem : selectedVideo};
-    this.setState(deleteVideoItem);
+    const selectedVideo = {...this.state.selectedVideo, selectedVideo : selectedVid};
+    this.setState(selectedVideo);
   }
 
   handleCloseModalDelete = () => {
@@ -171,20 +171,20 @@ class AddVideo extends Component {
   handleEditSubmit = e => {
     e.preventDefault();
     const errorsObj = {};
-    const { deleteVideoItem } = this.state;
+    const { selectedVideo } = this.state;
     let hasLinkValue = false;
-    if (deleteVideoItem.title === '') {
+    if (selectedVideo.title === '') {
       errorsObj.title = 'Title is required';
     }
 
-    if (deleteVideoItem.url === '') {
+    if (selectedVideo.url === '') {
       errorsObj.url = 'Link is required';
       hasLinkValue = true;
     }
 
     const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})?$/;
 
-    const url = (decodeURIComponent(deleteVideoItem.url));
+    const url = (decodeURIComponent(selectedVideo.url));
     const match = url.match(regex);
 
     if (!hasLinkValue && !match) {
@@ -197,7 +197,7 @@ class AddVideo extends Component {
       return;
     }
 
-    saveVideo(deleteVideoItem).then(sVideo=> {
+    saveVideo(selectedVideo).then(sVideo=> {
 
       let filtered = this.state.videos.filter(function(value, index, arr){
         return value.id !== sVideo.id;
@@ -273,9 +273,9 @@ class AddVideo extends Component {
         </AddForm></Col><Col sm={6}></Col></Row>
       <PlayListAdmin videos={this.state.videos} handleEdit={this.handleEdit} handleDelete={this.handleDelete} handeApproved={this.handeApproved}></PlayListAdmin>
 
-      <EditModal deleteVideoItem={this.state.deleteVideoItem} modalShow={this.state.modalEdit} handleClose={this.handleCloseModalEdit} handleShow={this.handleShowModalEdit} handleDeleteVideo={this.handleDeleteVideo} errors={this.state.errorsEdit} video={this.state.video} onSubmit={this.handleEditSubmit} onTitleChange={this.handleTitleChangeEdit} onLinkChange={this.handleLinkChangeEdit}/>
+      <EditModal selectedVideo={this.state.selectedVideo} modalShow={this.state.modalEdit} handleClose={this.handleCloseModalEdit} handleShow={this.handleShowModalEdit} handleDeleteVideo={this.handleDeleteVideo} errors={this.state.errorsEdit} video={this.state.video} onSubmit={this.handleEditSubmit} onTitleChange={this.handleTitleChangeEdit} onLinkChange={this.handleLinkChangeEdit}/>
 
-      <DeleteModal deleteVideoItem={this.state.deleteVideoItem} modalShow={this.state.modalDelete} handleClose={this.handleCloseModalDelete} handleShow={this.handleShowModalDelete} handleDeleteVideo={this.handleDeleteVideo}/>
+      <DeleteModal selectedVideo={this.state.selectedVideo} modalShow={this.state.modalDelete} handleClose={this.handleCloseModalDelete} handleShow={this.handleShowModalDelete} handleDeleteVideo={this.handleDeleteVideo}/>
       <ToastContainer />
     </> );
   }
