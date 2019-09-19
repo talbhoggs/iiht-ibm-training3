@@ -54,13 +54,6 @@ class PlayerPage extends Component {
     this.setState({...this.state.player, player});
   }
 
-  handleReload () {
-    this.setState({
-      played : 0
-    });
-    this.handlePlay();
-  }
-
   handleEnded () {
 
   }
@@ -105,6 +98,11 @@ class PlayerPage extends Component {
     });
   }
 
+  handleReload(e) {
+    console.log(e)
+    //this.state.player.seekTo(parseFloat(0));
+  }
+
   handleUnLikes() {
     let selectedVideo = {...this.state.selectedVideo, unlikes : this.state.selectedVideo.unlikes + 1};
     saveVideo(selectedVideo).then(sVideo=> {
@@ -127,7 +125,9 @@ class PlayerPage extends Component {
             handleDecreaseVolume={this.handleDecreaseVolume.bind(this)}
             handleMute={this.handleMute.bind(this)}
             handleLikes={this.handleLikes.bind(this)}
-            handleUnLikes={this.handleUnLikes.bind(this)}></Controls>
+            handleUnLikes={this.handleUnLikes.bind(this)}
+            handleReload={this.handleReload.bind(this)}
+            ></Controls>
             <br />
             <progress id="progress-bar" max={1} value={this.state.player.played}></progress>
           </Col>

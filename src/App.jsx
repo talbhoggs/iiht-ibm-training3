@@ -32,10 +32,10 @@ class App extends Component {
   
   render() { 
     return (
+    <Router>
     <div className="App">
       <Header></Header>
       <Container className="Container">
-        <Router>
           <Switch>
             <Route exact path="/" component={Player} />
             <Route path='/about' component={About} />
@@ -43,9 +43,9 @@ class App extends Component {
             <Route path='/player' component={Player} />
             <Redirect to="/" />
           </Switch>
-        </Router>
       </Container>
     </div>
+    </Router>
     );
   }
 }

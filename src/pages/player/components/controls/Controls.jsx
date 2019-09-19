@@ -28,12 +28,12 @@ class Controls extends Component {
     } else {
     return (
       <>
-        <button onClick={this.props.handlePlay} className="btn"><FontAwesomeIcon icon="play-circle" /></button>
-        <button onClick={this.props.handlePause} className="btn"><FontAwesomeIcon icon="pause-circle" /></button>
+        <button onClick={this.props.handlePlay} className={`btn${this.props.player.playing ? ' disabled' : ''}`}><FontAwesomeIcon icon="play-circle" /></button>
+        <button onClick={this.props.handlePause} className={`btn${!this.props.player.playing ? ' disabled' : ''}`}><FontAwesomeIcon icon="pause-circle" /></button>
         <button onClick={this.props.handleIncreaseVolume} className="btn"><FontAwesomeIcon icon="plus-square" /></button>
         <button onClick={this.props.handleDecreaseVolume} className="btn"><FontAwesomeIcon icon="minus-square" /></button>
         <button onClick={this.props.handleReload} className="btn"><FontAwesomeIcon icon="redo-alt" /></button>
-        <button onClick={this.props.handleMute} className="btn"><FontAwesomeIcon icon="headphones-alt" /></button>
+        <button onClick={this.props.handleMute} className={`btn${this.props.player.muted ? ' disabled' : ''}`}><FontAwesomeIcon icon="headphones-alt" /></button>
         <div className="likeUnLike">
             <a onClick={this.props.handleLikes}><FontAwesomeIcon icon="thumbs-up" /></a> {this.props.selectedVideo.likes} &nbsp;
             <a onClick={this.props.handleUnLikes}><FontAwesomeIcon icon="thumbs-down" /></a> {this.props.selectedVideo.unlikes}
