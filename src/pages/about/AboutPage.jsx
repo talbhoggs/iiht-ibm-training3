@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import './About.css';
+import './AboutPage.css';
 
-class About extends Component {
+class AboutPage extends Component {
   render() { 
     return (
       <>    
@@ -28,4 +28,4 @@ class About extends Component {
   }
 }
  
-export default About;
+export default AboutPage;

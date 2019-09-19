@@ -12,8 +12,8 @@ import Header from './components/headers/Header';
 import Container from 'react-bootstrap/Container';
 
 // pages
-import About from './pages/about/About';
-import AddVideo from './pages/add-video/AddVideo';
+import About from './pages/about/AboutPage';
+import AddVideo from './pages/add-video/AddVideoPage';
 import Player from './pages/player/PlayerPage';
 
 // font awesome
