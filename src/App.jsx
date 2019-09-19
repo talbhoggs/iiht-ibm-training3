@@ -4,7 +4,6 @@ import './App.css';
 import React, { Component } from 'react';
 
 // react router
-import { Redirect } from 'react-router';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // components

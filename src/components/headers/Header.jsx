@@ -13,11 +13,11 @@ class Header extends Component {
   }
 
   handleActiveLink(activeLink){
-      if(activeLink == "about") {
+      if(activeLink === "about") {
         this.setState({...this.state.aboutActive, aboutActive :true})
         this.setState({...this.state.videoActive, videoActive :false})
         this.setState({...this.state.playerActive, playerActive :false})
-      } else if (activeLink == "player") {
+      } else if (activeLink === "player") {
         this.setState({...this.state.aboutActive, aboutActive :false})
         this.setState({...this.state.videoActive, videoActive :false})
         this.setState({...this.state.playerActive, playerActive :true})
