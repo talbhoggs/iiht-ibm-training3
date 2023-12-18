@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./bootstrap.superhero.min.css";
 import './index.css';
 
 import App from './App';
@@ -9,8 +10,9 @@ import * as serviceWorker from './serviceWorker';
 import configStore from './redux/store';
 import { Provider } from 'react-redux';
 
-import "bootstrap/dist/css/bootstrap.superhero.min.css";
+//import "bootstrap/dist/css/bootstrap.superhero.min.css";
 
+//
 const store = configStore();
 
 ReactDOM.render(
