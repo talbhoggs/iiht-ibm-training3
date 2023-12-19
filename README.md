@@ -12,9 +12,9 @@ This webapp is assignment number 3 for the Full Stack Developer (FSD) course by 
 * **Charles Amper**
 
 * **Date submitted** : September 20, 2019
-* **Training date** : December 2018 - ongoing
+* **Training date** : December 2018
 
-## Installing
+## Installation
 ### prerequisite
 
 Install 
@@ -58,19 +58,19 @@ Fake REST:
 
 **Congratulations your done!**
 
-## Screenshots
 
+## Application
 ### Player page
-![alt text](image_player.png)
+![alt text](docs/resources/image_player.png)
 
 ### About page
-![alt text](image_about.png)
+![alt text](docs/resources/image_about.png)
 
 ### Add Video page
-![alt text](image_add.png)
+![alt text](docs/resources/image_add.png)
 
 ### Edit modal
-![alt text](image_edit.png)
+![alt text](docs/resources/image_edit.png)
 
 ### Delete modal
-![alt text](image_delete.png)
+![alt text](docs/resources/image_delete.png)
